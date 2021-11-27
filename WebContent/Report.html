@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Report</title>
+</head>
+<body>
+		<h1 align="center">Dating System</h1>
+		<p><b><font size=5>Dating system Home page</font></b></p>
+		<img src="Images/DatingSystem.JPG" title="Dating System" width="800px" />
+		<p><b><font size=5>Login Page</font></b></p>
+		<img src="Images/Loginpage.JPG" title="Loginpage" width="800px" />
+		<p>In login page, if the username and password is entered incorrectly, then will show the error message.</p>
+		<img src="Images/Loginfailed.JPG" title="Loginfailed" width="800px" />
+		<p>The username password validation is done using the <b>Loggedin.java</b> servlet. The code is:</p><br/>
+		<i><b><p>String username = req.getParameter("username");</p>
+        <p>String password = req.getParameter("password");</p>
+         <p>try {</p>
+        	 <p>stmt = con.createStatement();</p>
+        	 <p>rs = stmt.executeQuery("select * from sreenathdatbl1 where username = '"+username+"' and password = '"+password+"'");</p>
+
+        	 <p>if (rs.next()) {<p>
+         		<p>out.println("<b>Hello <i>" + rs.getString("FIRSTNAME") + " " + rs.getString("LASTNAME")+"</i></b>");</p>
+        	 <p>}else {</p>
+        		<p> res.sendRedirect("Loginfailed.html");</p>
+        	<p> }}</p>
+        <p> catch (Exception e) {</p>
+        	<p> out.println("An error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
+         }
+         </p></b></i><br/>
+         <p><b><font size=5>Signup Page</font></b></p>
+         <img src="Images/signup.JPG" title="signup" width="800px" />
+         <p>This page enables the user to register to the application by entering the personal details. The <b>Signupservlet.java</b> enables the functionality. This is done using the code:</p><br/>
+         <p><i><b>String firstname = req.getParameter("firstname");</p>
+         <p>String lastname = req.getParameter("lastname");</p>
+         <p>int age =Integer.parseInt(req.getParameter("age"));</p>
+         <p>String gender = req.getParameter("gender");</p>
+         <p>String nationality = req.getParameter("nationality");</p>
+         <p>String emailid = req.getParameter("email");</p>
+         <p>String username = req.getParameter("username");</p>
+         <p>String password = req.getParameter("password");</p>
+         
+         <p>try {</p>
+        	<p> Statement stmt =con.createStatement();
+			  <p>stmt.executeUpdate("insert into sreenathdatbl1 values ('"+firstname+"','"+lastname+"',"+age+",'"+gender+"','"+nationality+"','"+username+"','"+password+"','"+emailid+"')");</p>
+	     		<p>out.println("<b>Welcome <i>"+firstname+" "+lastname+"</i>!!!You have successfully registered</b>");</p>
+	     		<p>out.println("<p> To Login click <a href=\"Login.html\"><b>here</b></a></p>");</p>
+	 	<p>}
+        <p> catch (Exception e) {</p>
+        <p>	 out.println("<BR>An error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
+        <p> }</p></b></i><br/>
+        <img src="Images/registered.JPG" title="signup" width="800px" />
+        
+         <p><b><font size=5>User Home page</font></b></p>
+         <img src="Images/loggedin.JPG" title="user home page" width="800px" />
+         <p>After the user logs in the user will be then given the options to go to my profile and also to user list. The my profile function is done using the code:</p><br/>
+         <p><i><b>try {</p>
+        	<p> stmt = con.createStatement();</p>
+        	<p> rs = stmt.executeQuery("select * from sreenathdatbl1");</p>
+             
+        	<p> while (rs.next()) {</p>
+         	<p>	out.println("<b>My profile:</b>");</p>
+         	<p>	out.println("Firstname: "+req.getParameter("firstname"));</p>
+         	<p>	out.println("Lastname: "+req.getParameter("lastname"));</p>
+         	<p>	out.println("Age: "+req.getParameter("age"));</p>
+         	<p>	out.println("Gender: "+req.getParameter("gender"));</p>
+         	<p>	out.println("Nationality: "+req.getParameter("nationality"));</p>
+         	<p>	out.println("email: "+req.getParameter("email"));</p>
+        	 <p>}
+         }
+         </p></b></i><br/>
+         <p>The User list redirects to a page in which the search option is available.</p>
+         <img src="Images/userlist.JPG" title="userlist" width="800px" />
+          <p>The category search option in the userlist redirects to a new page. Here there is a search box and a category list where the search option can be typed and the category can be chosen. This function is done using the <b>Search.java</b> servlet. the code used:</p><br/>
+         <img src="Images/categorysearch.JPG" title="category search" width="800px" />
+         <p><i><b>String search = request.getParameter("search");</p>
+		<p>String category = request.getParameter("category");</p>
+ 	 	<p>try {</p>
+      	     		<p>stmt = con.createStatement();</p>
+	     		<p>rs = stmt.executeQuery("SELECT * FROM sreenathdatbl1 where "+category+" = '"+search+"'");</p>
+	     		<p>out.println("<tr><td><b>NAME</b></td><td><b>AGE</b></td><td><b>NATIONALITY</b></td></tr>");</p>
+	     		<p>while (rs.next())</p>
+	     			<p>out.println("<tr><td>" + rs.getString("FIRSTNAME") + " " + rs.getString("LASTNAME")+"</td><td>"+ rs.getString("AGE") +"</td><td>"+ rs.getString("NATIONALITY") +"</td></tr>");</p>
+
+ 	 	<p>}</p>
+        <p>catch (Exception e) {</p>
+	   <p>  		out.println("<BR>An error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
+	    }
+         </p></b></i><br/> 
+         <img src="Images/search.JPG" title="search result" width="800px" />
+        <p><b><font size=5>Logout page</font></b></p> 
+        <img src="Images/logout.JPG" title="Dating System" width="800px" />
+        <br/>
+        <p><i><font color=red>*The function for arranging dates is not done.</font></i><p>
+         
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+ 		<meta charset="ISO-8859-1">
+	 	<title>Sign up</title>
+	 	<style type="text/css">
+		body { }
+		.header { float:left; width:100%; height: 100px; background-color:maroon }
+		</style>
+ 	</head>
+
+ 	<body bgcolor="wheat">
+ 		<h1 align="center"><div class="header"><font face="arial" size="18" color="white">My Dating System!!!</font></div></h1>
+			<br/>
+ 		<h2 align="center">Please fill the details:</h2> 
+ 		<form method="POST" action="/DatingSystem_17212398/Signupservlet" name="register"> 
+  			<table align="center">
+  				<tr><td>Firstname:</td><td> <input type="text" name="firstname" placeholder="Use upper case letter" /></td></tr>
+				<tr><td>Lastname:</td><td> <input type="text" name="lastname" placeholder="Use upper case letter"/></td></tr>
+				<tr><td>Age:</td><td><input type="number" name="age" /></td></tr>
+				<tr><td>Gender:</td><td>
+				<select name="gender">
+				<option>MALE</option>
+				<option>FEMALE</option>
+				</select>
+				</td></tr>
+				<tr><td>Nationality:</td><td><input type="text" name="nationality" placeholder="Use upper case letter"/></td></tr>
+				<tr><td>Username:</td><td><input type="text" name="username" /></td></tr>
+				<tr><td>Password:</td><td><input type="password" name="password" /></td></tr>
+				<tr><td>Email id:</td><td><input type="email" name="emailid" /></td></tr>
+				 <tr><td><input type="submit" value="Register" />
+	 		</table>
+ 		</form>
+ 		</body>
+ </html>
